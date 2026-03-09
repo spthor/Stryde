@@ -64,14 +64,15 @@ body{
   position:fixed;inset:0;background:var(--bg);z-index:1000;
   display:flex;flex-direction:column;overflow:hidden;
 }
-.ob-slides{display:flex;transition:transform 0.45s cubic-bezier(0.32,0.72,0,1);width:300%}
-.ob-slide{width:33.333%;flex-shrink:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 32px;text-align:center;min-height:100vh}
-.ob-emoji{font-size:72px;margin-bottom:24px;animation:floatBob 3s ease-in-out infinite}
+.ob-slides-wrap{flex:1;overflow:hidden;min-height:0}
+.ob-slides{display:flex;transition:transform 0.45s cubic-bezier(0.32,0.72,0,1);width:300%;height:100%}
+.ob-slide{width:33.333%;flex-shrink:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 32px 16px;text-align:center;height:100%}
+.ob-emoji{font-size:64px;margin-bottom:20px;animation:floatBob 3s ease-in-out infinite}
 @keyframes floatBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-.ob-title{font-size:28px;font-weight:700;letter-spacing:-0.03em;color:var(--label1);margin-bottom:12px;line-height:1.2}
-.ob-body{font-size:16px;color:var(--label3);line-height:1.65;max-width:320px;font-weight:400}
-.ob-bottom{padding:24px 24px calc(40px + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:12px;align-items:center}
-.ob-dots{display:flex;gap:6px;margin-bottom:8px}
+.ob-title{font-size:26px;font-weight:700;letter-spacing:-0.03em;color:var(--label1);margin-bottom:10px;line-height:1.2}
+.ob-body{font-size:15px;color:var(--label3);line-height:1.6;max-width:320px;font-weight:400}
+.ob-bottom{padding:20px 24px calc(28px + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:10px;align-items:center;flex-shrink:0;background:var(--bg)}
+.ob-dots{display:flex;gap:6px;margin-bottom:4px}
 .ob-dot{width:6px;height:6px;border-radius:50%;background:var(--fill2);transition:all 0.25s}
 .ob-dot.act{background:var(--blue);width:18px;border-radius:3px}
 .ob-next{
@@ -545,6 +546,7 @@ select.lg-inp{cursor:pointer}
 
 <!-- ONBOARDING -->
 <div id="onboarding">
+  <div class="ob-slides-wrap">
   <div class="ob-slides" id="obSlides">
     <div class="ob-slide">
       <div class="ob-emoji">⚡</div>
@@ -561,7 +563,8 @@ select.lg-inp{cursor:pointer}
       <div class="ob-title">Ready to start?</div>
       <div class="ob-body">Create your first profile below. Your progress saves on this device. Share the link with friends so they can run the protocol too.</div>
     </div>
-  </div>
+  </div><!-- /ob-slides -->
+  </div><!-- /ob-slides-wrap -->
   <div class="ob-bottom">
     <div class="ob-dots" id="obDots"></div>
     <button class="ob-next" id="obNextBtn" onclick="obNext()">Get Started</button>
